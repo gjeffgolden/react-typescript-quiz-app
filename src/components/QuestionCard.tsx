@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {
     question: string,
-    answers: string[],
+    answer: string[],
     callback: any,
     userAnswer: any,
     questionNumber: number,
@@ -10,7 +10,7 @@ type Props = {
 }
 
 //React.FC = Functional Component type
-const QuestionCard: React.FC<Props> = ({ question, answers, callback, userAnswer, questionNumber, totalQuestions }) => {
+const QuestionCard: React.FC<Props> = ({ question, answer, callback, userAnswer, questionNumber, totalQuestions }) => {
     return(
         <div>
             <p className="number">
@@ -18,8 +18,8 @@ const QuestionCard: React.FC<Props> = ({ question, answers, callback, userAnswer
             </p>
             <p dangerouslySetInnerHTML={{ __html: question }} />
             <div>
-                {answers.map(answer => (
-                    <div>
+                {answer.map((answer) => (
+                    <div key={answer}>
                         <button disabled={userAnswer} onClick={callback}>
                             <span dangerouslySetInnerHTML={{ __html: answer }} />
                         </button>
